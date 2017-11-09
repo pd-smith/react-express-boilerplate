@@ -11,6 +11,7 @@ Here is a Node / Express server that serves React pages compatible for even IE 1
 * Express
 * Webpack
 * Babel
+* Galmorous
 
 ## To Run
 
