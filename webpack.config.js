@@ -1,5 +1,6 @@
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = (env = {}) => {
@@ -9,19 +10,31 @@ module.exports = (env = {}) => {
             fileName: `${production ? 'production' : 'development'}Manifest.json`,
             publicPath: '/webpack/',
             map: (options) => {
-                options.name = path.parse(options.name).name;
-                return options;
+                const newOptions = options;
+                newOptions.name = path.parse(options.name).name;
+                return newOptions;
             }
         })
     ];
-    production ? plugins.push(new UglifyJSPlugin()) : null;
+
+    if (production) {
+        plugins.push(
+            new UglifyJSPlugin(),
+            new webpack.DefinePlugin({
+                'process.env': {
+                    NODE_ENV: JSON.stringify('production')
+                }
+            })
+        );
+    }
+
     return {
         entry: {
             home: './src/pages/home/HomeEntry.jsx'
         },
         output: {
-            libraryTarget: 'umd',        
-            filename: `[name]${production ? '.min.js' : '.js'}`,
+            libraryTarget: 'umd',
+            filename: `[name]-[hash]${production ? '.min.js' : '.js'}`,
             path: `${__dirname}/dist/static/webpack`
         },
         module: {
@@ -38,4 +51,4 @@ module.exports = (env = {}) => {
             ]
         }
     };
-};  
+};
