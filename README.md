@@ -1,7 +1,7 @@
 # Node Website Boilerplate
 
-Tired of setting up the same old code to do the same old thing. Now it's already done for you!
-Here is a Node / Express server that serves React pages compatable for even IE 10!
+Tired of setting up the same old code to do the same old thing? Now it's already done for you!
+Here is a Node / Express server that serves React pages compatible for even IE 10!
 
 
 ## Noteable Tools
