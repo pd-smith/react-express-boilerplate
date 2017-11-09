@@ -1,7 +1,7 @@
 {
-  "name": "node-website-boilerplate",
+  "name": "react-express-boilerplate",
   "version": "0.0.1",
-  "description": "Webserver that hosts React webpages",
+  "description": "Isomorphic Node / Express / React webapp boilerplate",
   "scripts": {
     "build": "npm-run-all clean eslint build-artifacts compile deploy:*",
     "build-artifacts": "npm-run-all --parallel build-artifacts:*",
@@ -17,7 +17,6 @@
   "author": "pd-smith",
   "license": "ISC",
   "devDependencies": {
-    "babel": "6.23.0",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
